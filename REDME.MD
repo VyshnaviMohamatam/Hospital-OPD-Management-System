@@ -1,87 +1,95 @@
-# 🏥 Hospital OPD Management System
+# 🏥 Hospital Outpatient Management System (Microsoft Access)
 
-The **Hospital OPD Management System** is a VBA-based automation project built using **Microsoft Excel**. It is designed to help streamline the operations of an Outpatient Department (OPD) by simplifying patient registration, appointment scheduling, and doctor allocation.
-
-This system is ideal for small clinics, private hospitals, or training projects related to healthcare process automation.
+This project is a simple yet functional **Hospital Outpatient Management System** built using **Microsoft Access**. It demonstrates key database concepts such as **table design, relationships, forms, queries, data validation,** and **report generation**.
 
 ---
 
-## 📌 Key Features 
+## 📌 Features
 
-### 1. 📝 Patient Registration
-- A user-friendly form built using VBA allows staff to input new patient details.
-- Captures key fields such as:
-  - Full Name
-  - Age and Gender
-  - Contact Number
-  - Visit Date
-  - Reason for Visit
-- Data is automatically saved in a structured Excel sheet (`Patient_Data`) for future access.
+- Two related tables: **Patients** and **Visits**
+- Data validation rules (e.g., age range, required fields)
+- Lookup combo box for gender and patient selection
+- One-to-many relationship between Patients and Visits
+- A user-friendly **form** for entering visit details
+- A **report** generated from a query showing complete visit information
+- Input mask for phone number formatting
 
 ---
 
-### 2. 📅 Appointment Scheduling
-- Allows front-desk staff to book appointments for registered patients.
-- Automatically prevents double-booking for the same doctor and time slot.
-- Appointments are recorded along with patient ID and visit details.
+## 🧱 Database Structure
+
+### 🧑‍⚕️ Table: `Patients`
+
+| Column Name     | Data Type     | Description                                |
+|-----------------|---------------|--------------------------------------------|
+| Patient_ID      | AutoNumber    | Primary Key (unique ID)                    |
+| Patient_Name    | Short Text    | Required                                   |
+| Gender          | Lookup Wizard | Options: Male, Female, Other               |
+| Age             | Number        | Validation: Between 0 and 120              |
+| PhoneNumber     | Short Text    | Input Mask: 10-digit format (e.g., 0000000000) |
+
+### 📅 Table: `Visits`
+
+| Column Name     | Data Type     | Description                                |
+|-----------------|---------------|--------------------------------------------|
+| Visit_ID        | AutoNumber    | Primary Key                                |
+| VisitDate       | Date/Time     | Date of the visit                          |
+| Doctor          | Short Text    | Required                                   |
+| Patient_ID      | Number        | Foreign Key (linked to Patients table)     |
 
 ---
 
-### 3. 👨‍⚕️ Doctor Allocation
-- Based on the patient’s reason for visit (e.g., fever, injury, etc.), the system assigns the patient to a relevant department and doctor.
-- Doctor availability is cross-checked from the `Doctor_Schedule` sheet to ensure proper allocation.
+## 🔗 Relationships
+
+- **One-to-Many** relationship from `Patients.Patient_ID` ➝ `Visits.Patient_ID`
+- Enforced **referential integrity** to maintain data consistency
 
 ---
 
-### 4. 🔍 Search and Filter Functionality
-- Staff can search for patients by:
-  - Patient ID
-  - Name
-  - Appointment date
-  - Assigned doctor
-- Filters are implemented using Excel VBA to provide instant and dynamic search results.
+## 🧾 Queries
+
+- `Visit_Details_Query`: Combines patient and visit data using a join
+  - Includes: Patient Name, Doctor, Age, Phone Number, Visit Date
 
 ---
 
-### 5. 📊 Reporting Module
-- Automatically generates reports for:
-  - Daily visit counts
-  - Weekly summary of patient appointments
-  - Doctor-wise patient load
-- Reports are displayed in tabular form and can be printed directly.
+## 🧮 Forms
+
+- **Visits Entry Form**: Pop-up style form for entering new visits  
+  - Dropdown to select patient by name  
+  - Automatically stores patient ID behind the scenes  
 
 ---
 
-### 6. ✅ Data Validation & User Experience
-- Drop-down lists are used for:
-  - Gender selection
-  - Department
-  - Doctor names
-- Validation rules prevent incomplete or incorrect data from being entered.
-- Message boxes alert the user when fields are missing.
+## 🖨️ Report
+
+- Report created on the `Visit_Details_Query`
+- Displays patient name, doctor, visit date, age, and phone number
+- Useful for printing or reviewing outpatient records
 
 ---
 
-## 💻 Technologies Used
+## 💡 Technologies Used
 
-| Technology | Description |
-|------------|-------------|
-| Microsoft Excel | Main interface and database tables |
-| VBA (Visual Basic for Applications) | Backend logic, automation, forms, buttons, reports |
+- 💻 Microsoft Access 2016 or later
+- 📊 MS Access Query Builder
+- 🧩 Forms and Report Design tools
 
 ---
 
-## 🚀 How to Use
+---
 
-1. **Open Excel File**: Download and open `Hospital_OPD_Management_System.xlsm`.
-2. **Enable Macros**: Click “Enable Content” when prompted to allow VBA execution.
-3. **Navigate Through Dashboard**: Use buttons to access:
-   - Register Patient Form
-   - Schedule Appointment
-   - Generate Reports
-   - View Doctor Allocation
-4. **Enter Data Using Forms**: All entries go through structured input forms.
-5. **Review Reports**: Use the reports sheet for quick summaries.
+## 🧠 Learning Outcomes
+
+- Designed relational tables with validation and constraints
+- Built user-friendly forms and reports
+- Learned how to work with lookup fields and input masks
+- Understood one-to-many relationships in database design
+
+---
+
+## 📇 Author
+Mohamatam Vyshnavi
 
 ---
 
