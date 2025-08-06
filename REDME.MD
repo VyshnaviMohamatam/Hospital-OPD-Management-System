@@ -6,7 +6,7 @@ This system is ideal for small clinics, private hospitals, or training projects 
 
 ---
 
-## 📌 Key Features (Detailed Explanation)
+## 📌 Key Features 
 
 ### 1. 📝 Patient Registration
 - A user-friendly form built using VBA allows staff to input new patient details.
